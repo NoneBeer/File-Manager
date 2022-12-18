@@ -11,9 +11,11 @@ export const currentPath = () => {
 export const goodbye = () => {
     console.log(`Thank you for using File Manager, ${getUsername()}, goodbye!`);
 }
+
 export const error = () => {
     console.error('Operation failed');
 }
+
 export const invalid = () => {
     console.error('Invalid input')
 }

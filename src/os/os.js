@@ -1,7 +1,7 @@
 import {EOL, cpus, homedir, userInfo,arch} from 'os';
 import { invalid } from "../utils/writeMessage.js";
 
-export const operationSystemInfo = (arg) => {
+export const os = (arg) => {
     switch (arg) {
         case '--EOL': {
             console.log(`Default system End-Of-Line is ${JSON.stringify(EOL)}`);
