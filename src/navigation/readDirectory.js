@@ -1,4 +1,5 @@
 import { readdir } from 'fs/promises';
+import { error } from '../utils/writeMessage.js';
 
 export async function readDirectory(path) {
     try {
@@ -23,7 +24,7 @@ export async function readDirectory(path) {
         });
 
         console.table(dirents);
-    } catch (err) {
-        console.error('Operation failed');
+    } catch {
+        error()
     }
 }

@@ -1,11 +1,10 @@
-import { resolve } from 'path';
-import { isExist } from "../utils/checkExist.js";
+import { resolve, normalize } from 'path';
+import { error } from '../utils/writeMessage.js';
 
 export const changeDirectory = async (path) => {
     try {
-        if (!path || !await isExist(path)) new Error();
-        process.chdir(resolve(path));
-    } catch(error) {
-        console.error('Operation filed');
+        process.chdir(normalize(resolve(path)));
+    } catch {
+        error();
     }
 }

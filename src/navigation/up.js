@@ -1,10 +1,11 @@
-import { resolve } from "path";
+import { resolve } from 'path';
+import { error } from "../utils/writeMessage.js";
 
 export function up() {
     const path = resolve(process.cwd(), '..');
     try {
         process.chdir(path);
     } catch {
-        console.error('Operation failed')
+        error();
     }
 }

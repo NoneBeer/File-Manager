@@ -1,7 +1,11 @@
 import { createInterface } from 'readline/promises';
 import { executeOperation } from './src/commandHandler.js';
+import { greeting } from "./src/utils/writeMessage.js";
+import { homedir } from "os";
 
-executeOperation('start');
+greeting();
+
+process.chdir(homedir());
 
 const rl = createInterface({
     input: process.stdin,
