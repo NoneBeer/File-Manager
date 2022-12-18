@@ -11,6 +11,7 @@ import { renameFile } from './basic-operations/rename.js';
 import { deleteFile } from './basic-operations/delete.js';
 import { copyFile } from './basic-operations/copy.js';
 import { moveFile } from './basic-operations/move.js';
+import { operationSystemInfo } from "./os/os.js";
 
 export const executeOperation = async (operation) => {
     const [command, ...args] = operation.trim().split(' ');
@@ -68,6 +69,12 @@ export const executeOperation = async (operation) => {
         case 'rm': {
             params.length
               ? await deleteFile(...params)
+              : invalid();
+            break;
+        }
+        case 'os': {
+            params.length
+              ? operationSystemInfo(...params)
               : invalid();
             break;
         }
