@@ -1,9 +1,10 @@
 import { rename } from 'fs/promises';
 import { error } from '../utils/writeMessage.js';
-import { resolve } from 'path';
+import { basename, resolve } from 'path';
 
-export const renameFile = async ([oldName, newName]) => {
-    await rename(resolve(oldName), resolve(newName))
-      .then(() => console.log(`File ${oldName} has been renamed to ${newName}`))
+export const renameFile = async ([oldPath, name]) => {
+    const newPath = resolve(oldPath).replace(basename(oldPath), '') + name
+    await rename(resolve(oldPath), newPath)
+      .then(() => console.log(`File '${basename(oldPath)}' has been renamed to '${name}'`))
       .catch(() => error());
 };

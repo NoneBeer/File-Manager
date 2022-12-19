@@ -13,6 +13,7 @@ import { copyFile } from './basic-operations/copy.js';
 import { moveFile } from './basic-operations/move.js';
 import { os } from './os/os.js';
 import { hash } from './hash/hash.js';
+import { zlib } from './zlib/zlib.js';
 
 export const executeOperation = async (operation) => {
     const [command, ...args] = operation.trim().split(' ');
@@ -50,19 +51,19 @@ export const executeOperation = async (operation) => {
             break;
         }
         case 'rn': {
-            params.length >= 2
+            params.length === 2
               ? await renameFile(params)
               : invalid();
             break;
         }
         case 'cp': {
-            params.length >= 2
+            params.length === 2
               ? await copyFile(params)
               : invalid();
             break;
         }
         case 'mv': {
-            params.length >= 2
+            params.length === 2
               ? await moveFile(params)
               : invalid();
             break;
@@ -82,6 +83,18 @@ export const executeOperation = async (operation) => {
         case 'hash': {
             params.length
               ? await hash(...params)
+              : invalid();
+            break;
+        }
+        case 'compress': {
+            params.length === 2
+              ? await zlib(params, 'compress')
+              : invalid();
+            break;
+        }
+        case 'decompress': {
+            params.length === 2
+              ? await zlib(params, 'decompress')
               : invalid();
             break;
         }

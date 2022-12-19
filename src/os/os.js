@@ -1,4 +1,4 @@
-import {EOL, cpus, homedir, userInfo,arch} from 'os';
+import { EOL, cpus, homedir, userInfo, arch } from 'os';
 import { invalid } from "../utils/writeMessage.js";
 
 export const os = (arg) => {
@@ -9,7 +9,7 @@ export const os = (arg) => {
         }
         case '--cpus': {
             console.log(`Overall amount of CPUS is ${cpus().length}`);
-            console.table(cpus().map(cpu => ({model: cpu.model, speed: cpu.speed / 1000})));
+            console.table(cpus().map(cpu => ({ model: cpu.model, speed: cpu.speed / 1000 })));
             break;
         }
         case '--homedir': {

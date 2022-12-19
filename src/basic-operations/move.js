@@ -10,12 +10,10 @@ export const moveFile = ([oldPath, newPath]) => {
         const ws = createWriteStream(resolve(`${newPath}${sep}${oldPath}`), { flags: 'wx' });
         rs.on('error', () => rej());
         ws.on('error', () => rej());
-        rs.pipe(ws).on("finish", () => {
-            res();
-        });
+        rs.pipe(ws).on("finish", () => res());
     }).then(async () => {
         await rm(resolve(oldPath))
-          .then(() => console.log(`File ${oldPath} has been moved to ${resolve(newPath)}`))
+          .then(() => console.log(`File '${oldPath}' has been moved to ${resolve(newPath)}`))
           .catch(() => error());
     }).catch(() => {
         error();

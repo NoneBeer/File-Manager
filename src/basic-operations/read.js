@@ -7,18 +7,11 @@ export const readFile = (path) => {
     let data = '';
 
     return new Promise((resolve, reject) => {
-        rs.on('error', () => {
-            reject();
-        });
-
-        rs.on('data', (chunk) => {
-            data += chunk;
-        });
-        rs.on('end', () => {
-            resolve();
-        });
+        rs.on('error', () => reject());
+        rs.on('data', (chunk) => data += chunk);
+        rs.on('end', () => resolve());
     }).then(() => {
-        process.stdout.write(`${data}\n`);
+        console.log(data);
     }).catch(() => {
         error();
     })

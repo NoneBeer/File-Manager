@@ -1,7 +1,7 @@
 import { createInterface } from 'readline/promises';
 import { executeOperation } from './src/commandHandler.js';
-import { greeting } from "./src/utils/writeMessage.js";
-import { homedir } from "os";
+import { greeting } from './src/utils/writeMessage.js';
+import { homedir } from 'os';
 
 greeting();
 
